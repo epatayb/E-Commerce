@@ -1,0 +1,17 @@
+@{
+    var type = TempData["MessageType"]?.ToString() ?? "warning";
+    var alertClass = type switch
+    {
+        "error" => "alert-danger",
+        "warning" => "alert-warning",
+        "success" => "alert-success",
+        _ => "alert-secondary"
+    };
+}
+
+@if (TempData["Message"] != null){
+    <div class="alert @alertClass text-center mb-0">
+        @TempData["Message"] 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}

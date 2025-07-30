@@ -1,0 +1,104 @@
+@model Order
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = @Model.Id + " numaralı sipariş detayı";
+}
+
+<div class="row">
+    <div class="col">
+        <div class="card shadow">
+            <div class="card-header py-1 d-flex justify-content-between align-items-center">
+                <h5 class="card-title">Sipariş No: #@Model.Id</h5>
+                <span class="badge bg-success p-2">Teslim Edildi</span>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped mb-2">
+                        <thead class="table-secondary">
+                            <tr>
+                                <th style="width: 40px;">Id</th>
+                                <th style="width: 80px;">Resim</th>
+                                <th>Ürün Adı</th>
+                                <th>Fiyat</th>
+                                <th>Adet</th>
+                                <th>Toplam</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.OrderItems)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>
+                                        <img src="~/img/@item.Product.Image" class="img-fluid" 
+                                            alt="~/img/@item.Product.ProductName">
+                                    </td>
+                                    <td>@item.Product.ProductName</td>
+                                    <td>@item.UnitPrice ₺</td>
+                                    <td>
+                                        @item.Quantity
+                                    </td>
+                                    <td>
+                                        @item.TotalPrice ₺
+                                    </td>
+                                </tr>
+                            }
+
+                            <tr class="fw-bold">
+                                <td colspan="4"></td>
+                                <td>Ara Toplam</td>
+                                <td>@Model.SubTotal ₺</td>
+                            </tr>
+                            <tr class="fw-bold">
+                                <td colspan="4"></td>
+                                <td>Vergi (%20)</td>
+                                <td>@Model.Tax ₺ </td>
+                            </tr>
+                            <tr class="fw-bold">
+                                <td colspan="4"></td>
+                                <td>Kargo Ücreti</td>
+                                <td>
+                                    @if(@Model.ShippingFee != 0){
+                                    <span>@Model.ShippingFee ₺</span>
+                                    }
+                                    else
+                                    {
+                                    <span>Ücretsiz</span>
+                                    }
+                                </td>
+                            </tr>
+                            <tr class="fw-bold">
+                                <td colspan="4"></td>
+                                <td>Toplam</td>
+                                <td>@Model.Total ₺</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered mb-0">
+                        <tr>
+                            <td style="width: 150px;">Sipariş Tarihi</td>
+                            <td>@Model.OrderDate</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 150px;">Ad Soyad</td>
+                            <td>@Model.ReceiverFullName</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 150px;">Teslimat Adresi</td>
+                            <td>@Model.Address / @Model.City / @Model.PostalCode / @Model.Phone</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 150px;">Fatura Adresi</td>
+                            <td>@Model.Address / @Model.City / @Model.PostalCode / @Model.Phone</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 150px;">Ödeme Bilgileri</td>
+                            <td>1234-34**-****-**** (Yapı Kredi Bankası - 3 Taksit)</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

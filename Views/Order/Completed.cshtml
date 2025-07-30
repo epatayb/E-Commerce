@@ -1,0 +1,22 @@
+@model string
+
+@{
+Layout = "_AccountLayout";
+ViewData["Title"] = "Siparişiniz Tamamlandı";
+}
+
+@section Bar {
+<li class="breadcrumb-item">
+    Sepeti Onayla
+</li>
+}
+
+<div class="card card-body my-4 text-center">
+    <h1 class="h3">Bizi tercih ettiğiniz için teşekkür ederiz</h1>
+    <p>
+        #@Model numaralı Siparişiniz alındı.
+    </p>
+    <p>
+        <a asp-controller="Order" asp-action="OrderList" class="btn btn-primary">Siparişleri Görüntüle</a>
+    </p>
+</div>

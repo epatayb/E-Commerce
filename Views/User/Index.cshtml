@@ -1,0 +1,73 @@
+@using Microsoft.AspNetCore.Identity
+@model IEnumerable<UserBaseModel>
+
+    @{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Kullanıcılar";
+    }
+
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header py-1 d-flex justify-content-between align-items-center">
+                    <h5 class="card-title">Kullanıcılar</h5>
+                    <a asp-action="Create" class="btn btn-sm btn-primary">
+                        <i class="fa-solid fa-plus"></i>
+                    </a>
+                </div>
+                <div class="card-body">
+
+                    <form method="get">
+                        <div class="input-group mb-2">
+                            <select name="role" class="form-select" asp-items="ViewBag.Roles">
+                                <option value="" selected>Hepsi</option>
+                            </select>
+                            <button class="btn btn-secondary" type="submit">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                    @if (Model.Count() == 0)
+                    {
+                    <p class="text-danger">Bu rolde kullanıcı yok.</p>
+                    }
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped mb-0">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Ad-Soyad</th>
+                                    <th>Email</th>
+                                    <th>Roller</th>
+                                    <th style="width: 90px;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.FullName</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.Role</td>
+                                    <td>
+                                        <a asp-controller="User" asp-action="Edit" asp-route-id="@item.Id"
+                                            class="btn btn-primary btn-sm">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                        <a asp-controller="User" asp-action="Delete" asp-route-id="@item.Id"
+                                            class="btn btn-danger btn-sm">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--password info@epatay.com  1234567a -->

@@ -1,0 +1,177 @@
+@model OrderCreateModel
+
+@{
+Layout = "_AccountLayout";
+ViewData["Title"] = "Siparişi Onayla";
+}
+
+
+@section Bar {
+<li class="breadcrumb-item">
+    Sepeti Onayla
+</li>
+}
+
+<section class="mt-3">
+    <div class="container">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <h2 class="h6 mb-0">Teslimat Detayları</h2>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label asp-for="ReceiverFullName" class="form-label"></label>
+                                    <input asp-for="ReceiverFullName" class="form-control">
+                                    <span asp-validation-for="ReceiverFullName" class="text-danger"></span>
+                                </div>
+
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label asp-for="City" class="form-label"></label>
+                                    <input asp-for="City" class="form-control">
+                                    <span asp-validation-for="City" class="text-danger"></span>
+
+                                </div>
+
+                                <div class="col">
+                                    <label asp-for="Phone" class="form-label"></label>
+                                    <input asp-for="Phone" class="form-control">
+                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                </div>
+
+                                <div class="col">
+                                    <label asp-for="PostalCode" class="form-label"></label>
+                                    <input asp-for="PostalCode" class="form-control">
+                                    <span asp-validation-for="PostalCode" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label asp-for="Address" class="form-label"></label>
+                                    <textarea asp-for="Address" class="form-control" rows="3"></textarea>
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label asp-for="OrderNote" class="form-label"></label>
+                                    <textarea asp-for="OrderNote" class="form-control" rows="3"></textarea>
+                                    <span asp-validation-for="OrderNote" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="h6 mb-0">Ödeme Bilgileri</h2>
+                        </div>
+                        <div class="card-body">
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <label asp-for="CardHolderName" class="form-label"></label>
+                                        <input asp-for="CardHolderName" class="form-control">
+                                        <span asp-validation-for="CardHolderName" class="text-danger"></span>
+                                    </div>
+                                    <div class="col">
+                                        <label asp-for="CardNumber" class="form-label"></label>
+                                        <input asp-for="CardNumber" class="form-control">
+                                        <span asp-validation-for="CardNumber" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <label asp-for="CardExpireMonth" class="form-label"></label>
+                                        <input asp-for="CardExpireMonth" class="form-control">
+                                        <span asp-validation-for="CardExpireMonth" class="text-danger"></span>
+
+                                    </div>
+
+                                    <div class="col">
+                                        <label asp-for="CardExpireYear" class="form-label"></label>
+                                        <input asp-for="CardExpireYear" class="form-control">
+                                        <span asp-validation-for="CardExpireYear" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="col">
+                                        <label asp-for="CardCvv" class="form-label"></label>
+                                        <input asp-for="CardCvv" class="form-control">
+                                        <span asp-validation-for="CardCvv" class="text-danger"></span>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="h6 mb-0">Sipariş Özeti</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group">
+                                @foreach (var item in ViewBag.Cart.CartItems)
+                                {
+                                <div class="d-flex justify-content-between align-items-center list-group-item">
+                                    <p class="mb-0">@item.Product.ProductName (x @item.Quantity)</p>
+                                    <span>@(item.Product.Price * item.Quantity) ₺</span>
+                                </div>
+                                }
+                                <div class="d-flex justify-content-between align-items-center list-group-item">
+                                    <p class="mb-0"></p>
+                                    <span></span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center list-group-item">
+                                    <p class="mb-0">Ara Toplam</p>
+                                    <span>@ViewBag.Cart.SubTotal ₺</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center list-group-item">
+                                    <p class="mb-0">Vergi (%20)</p>
+                                    <span>@ViewBag.Cart.Tax ₺</span>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center list-group-item">
+                                    <p class="mb-0">Kargo Ücreti</p>
+
+                                    @if(@ViewBag.Cart.ShippingFee != 0){
+                                    <span>@ViewBag.Cart.ShippingFee ₺</span> }
+                                    else
+                                    {
+                                    <span>Ücretsiz Kargo</span>
+                                    }
+                                </div>
+                                <div
+                                    class="d-flex justify-content-between align-items-center list-group-item text-danger">
+                                    <p class="mb-0">Toplam</p>
+                                    <span class="fs-5">@ViewBag.Cart.Total ₺</span>
+                                </div>
+                            </div>
+                            <div class="d-grid mt-3">
+                                <button type="submit" asp-controller="Order" asp-action="Checkout"
+                                    class="btn btn-primary btn-lg">
+                                    Siparişi Tamamla
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</section>
+
+@section Scripts
+{
+@await Html.PartialAsync("_ValidationScriptsPartial")
+}

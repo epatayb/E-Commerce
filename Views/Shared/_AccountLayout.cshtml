@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/site.css">
+    <title>@ViewData["Title"] - E-Commerce</title>
+</head>
+
+<body class="bg-light">
+
+    <div class="d-flex flex-column min-vh-100">
+
+        <header>
+            @await Html.PartialAsync("Partials/Account/_Message")
+            @await Html.PartialAsync("Partials/Site/_Topbar")
+            <section class="bg-primary p-3">
+                <div class="container">
+                    <nav>
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item">
+                                <a asp-controller="Home" asp-action="Index">Anasayfa</a>
+                            </li>
+                            @RenderSection("Bar", required: false)
+                        </ol>
+                    </nav>
+                </div>
+            </section>
+        </header>
+
+        <main class="flex-fill">
+            @RenderBody()
+        </main>
+
+        @await Html.PartialAsync("Partials/Site/_Footer")
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="~/js/fslightbox.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+        <script src="~/js/cartHub.js"></script>
+        <script src="~/js/productHub.js"></script>
+
+
+        @RenderSection("Scripts", required : false)
+
+    </div>
+</body>
+
+</html>

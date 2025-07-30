@@ -1,0 +1,57 @@
+@model AccountLoginModel
+
+@{
+    Layout = "_AccountLayout";
+    ViewData["Title"] = "Giriş Yap";
+}
+
+@section Bar {
+    
+<li class="breadcrumb-item dropdown d-inline-block">
+    <a href="#" class="dropdown-toggle text-decoration-underline" data-bs-toggle="dropdown" role="button">Giriş Yap</a>
+
+    <div class="dropdown-menu">
+        <a asp-action="Create" class="dropdown-item text-dark">Kayıt Ol</a>
+    </div>
+</li>
+}
+
+
+<section class="mt-3">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-7">
+                <div class="card card-body">
+                    <form method="post" novalidate>
+                    
+                        <div asp-validation-summary="All" class="text-danger"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label"></label>
+                            <input asp-for="Email" class="form-control">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label"></label>
+                            <input asp-for="Password" class="form-control">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input asp-for="rememberMe" class="form-check-input">
+                            <label asp-for="rememberMe" class="form-check-label"></label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Giriş Yap</button>
+                        <a asp-controller="Account" asp-action="ForgotPassword" class="btn btn-warning">Şifremi unuttum?</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts
+{
+@await Html.PartialAsync("_ValidationScriptsPartial")
+}

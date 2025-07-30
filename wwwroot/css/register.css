@@ -1,0 +1,101 @@
+
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 90vh;
+        background: #dbe4ff;
+    }
+
+    .login-box {
+        display: flex;
+        width: 800px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        border-radius: 20px;
+        overflow: hidden;
+        background: #fff;
+    }
+
+    .login-left {
+        background-color: #729ef0;
+        color: white;
+        padding: 40px;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-left h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .login-left p {
+        margin-bottom: 20px;
+    }
+
+    .login-left button {
+        background: transparent;
+        color: white;
+        border: 1px solid white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .login-left button:hover {
+        background: white;
+        color: #729ef0;
+    }
+
+    .login-right {
+        padding: 40px;
+        width: 50%;
+    }
+
+    .login-right h2 {
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .login-right input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .login-right .forgot {
+        text-align: right;
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+
+    .login-right .login-button .btn {
+        background-color: #729ef0;
+        color: white;
+        padding: 10px;
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .login-right .social-icons {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .login-right .social button {
+        margin: 0 5px;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        cursor: pointer;
+    }
