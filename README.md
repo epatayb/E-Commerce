@@ -76,3 +76,20 @@ Projeyi ilk çalıştırdığınızda, **veritabanı otomatik olarak aşağıdak
 Projeyi test etmek için doğrudan giriş yapabilirsiniz.
 
 ---
+
+<img width="1915" height="905" alt="Ekran görüntüsü 2026-06-13 124604" src="https://github.com/user-attachments/assets/387dcd94-14f6-4c66-8417-042c3faf8154" />
+
+---
+
+<img width="1917" height="912" alt="image" src="https://github.com/user-attachments/assets/9b2a38dd-ee40-44ed-90b0-f5bd68373a68" />
+
+---
+
+<img width="1908" height="732" alt="image" src="https://github.com/user-attachments/assets/4c841274-a4ec-4a5c-be41-7ad2bb4246ed" />
+
+---
+
+<img width="1911" height="568" alt="image" src="https://github.com/user-attachments/assets/bc329693-01e5-4045-9ed7-d62a5ae2ec82" />
+
+
+
